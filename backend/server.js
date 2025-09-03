@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const routersCaller = require('./routes/workouts');
 const app = express();
+const mongoose = require('mongoose');
 // middleware 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -22,11 +23,15 @@ app.get('/', (req, res) => {
 
 // call routers
 app.use('/api/workouts', routersCaller);
-
-
-
-
-// start the server, in the specified port defined in the dotenv file.
-app.listen(process.env.PORT, () => {
-    console.log(`the server is running in ${process.env.PORT}`);
-});
+//cvwpTl9YyOcTtPUp
+// connect to the data base
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log(`Database connected successfully. Server running on port ${process.env.PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Failed to connect to MongoDB:', error.message);
+        process.exit(1);
+    });
