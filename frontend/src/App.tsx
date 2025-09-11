@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home.jsx'
-import About from './pages/About.jsx'
-import Navbar from './components/Navbar.jsx'
+import Home from './pages/Home'
+import About from './pages/About'
+import Navbar from './components/Navbar'
 import './App.css'
 
-function App() {      
-  
+function App() {
+
   return (
     <>
       <BrowserRouter>

@@ -1,7 +1,8 @@
+import WorkoutForm from "../components/WorkoutForm";
 const About = () => {
     return ( 
         <div>
-            <h1>About Page</h1>
+            <WorkoutForm />
         </div>
     );
 }
